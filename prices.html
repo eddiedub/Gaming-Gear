@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Price Calculator - Gaming Gear</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <a href="index.html" class="logo">GAMING GEAR</a>
+        <div class="nav-links">
+            <a href="mouse.html">Lamzu Maya X</a>
+            <a href="mousepad.html">Artisan Zero FX</a>
+            <a href="keyboard.html">Wooting 60HE</a>
+            <a href="headset.html">HyperX Cloud III</a>
+            <a href="bungee.html">Pulsar Mouse Bungee</a>
+            <a href="sleeve.html">Pulsar Mouse Sleeve</a>
+            <a href="prices.html" class="price-button">Prices</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Price Calculator</h1>
+            <p class="tagline">Build Your Setup</p>
+            
+            <div class="calculator-container">
+                <div class="product-selection">
+                    <label class="product-item">
+                        <input type="checkbox" id="mouse" data-price="120">
+                        <span>Lamzu Maya X</span>
+                        <span>$120</span>
+                    </label>
+                    <label class="product-item">
+                        <input type="checkbox" id="mousepad" data-price="30">
+                        <span>Artisan Zero FX</span>
+                        <span>$30</span>
+                    </label>
+                    <label class="product-item">
+                        <input type="checkbox" id="keyboard" data-price="150">
+                        <span>Wooting 60HE</span>
+                        <span>$150</span>
+                    </label>
+                    <label class="product-item">
+                        <input type="checkbox" id="headset" data-price="60">
+                        <span>HyperX Cloud III</span>
+                        <span>$60</span>
+                    </label>
+                    <label class="product-item">
+                        <input type="checkbox" id="bungee" data-price="7">
+                        <span>Pulsar Mouse Bungee</span>
+                        <span>$7</span>
+                    </label>
+                    <label class="product-item">
+                        <input type="checkbox" id="sleeve" data-price="15">
+                        <span>Pulsar Mouse Sleeve</span>
+                        <span>$15</span>
+                    </label>
+                </div>
+                
+                <div class="total-container">
+                    <h2>Total: <span class="total-amount">$0</span></h2>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>

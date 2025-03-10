@@ -52,3 +52,47 @@ window.addEventListener('mousemove', (e) => {
         sleeveImage.style.transform = `translate(${moveX}px, ${moveY}px)`;
     }
 });
+
+// Price calculator functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const checkboxes = document.querySelectorAll('.product-item input[type="checkbox"]');
+    const totalAmount = document.querySelector('.total-amount');
+
+    if (checkboxes && totalAmount) {
+        checkboxes.forEach(checkbox => {
+            checkbox.addEventListener('change', calculateTotal);
+        });
+
+        function calculateTotal() {
+            let total = 0;
+            checkboxes.forEach(checkbox => {
+                if (checkbox.checked) {
+                    total += parseFloat(checkbox.dataset.price);
+                }
+            });
+            
+            // Animate the total number
+            animateNumber(totalAmount, total);
+        }
+
+        function animateNumber(element, final) {
+            const start = parseFloat(element.textContent.replace('$', ''));
+            const duration = 500;
+            const startTime = performance.now();
+            
+            function update(currentTime) {
+                const elapsed = currentTime - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+                
+                const current = start + (final - start) * progress;
+                element.textContent = '$' + current.toFixed(2);
+                
+                if (progress < 1) {
+                    requestAnimationFrame(update);
+                }
+            }
+            
+            requestAnimationFrame(update);
+        }
+    }
+});
