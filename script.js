@@ -96,3 +96,52 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 });
+
+// Loading animation functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const loader = document.querySelector('.loader-overlay');
+    const body = document.body;
+
+    if (loader) {
+        body.classList.add('loading');
+        
+        // Wait for all images and resources to load
+        window.addEventListener('load', () => {
+            // Add minimum delay of 800ms for visual consistency
+            setTimeout(() => {
+                loader.classList.add('loader-hidden');
+                body.classList.remove('loading');
+                
+                loader.addEventListener('transitionend', () => {
+                    if (loader.parentElement) {
+                        loader.parentElement.removeChild(loader);
+                    }
+                });
+            }, 800);
+        });
+    }
+});
+
+// Add loader for navigation links
+document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', function(e) {
+        // Only add loader for internal links
+        if (this.href.includes(window.location.origin)) {
+            localStorage.setItem('showLoader', 'true');
+            const loader = document.createElement('div');
+            loader.className = 'loader-overlay';
+            loader.innerHTML = `
+                <div class="loader-content">
+                    <div class="loader-spinner"></div>
+                    <div class="loader-text">LOADING</div>
+                </div>
+            `;
+            document.body.appendChild(loader);
+        }
+    });
+});
+
+// Check if we should show loader on page load
+if (localStorage.getItem('showLoader')) {
+    localStorage.removeItem('showLoader');
+}
